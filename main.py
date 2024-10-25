@@ -1,34 +1,38 @@
-print("TO-DO-LIST")
+import streamlit as st
 
+st.title("PYTHON CALCULATOR")
 
+# Input for operation
+Expr = st.text_input("Enter Your Operation (-, +, *, /):")
 
-headtext = """
-         1 Add Task
-         2 Display The Task
-         3 Delate the Task
-         4 quite
-          """
+# Input for first and second numbers
+Input1 = st.text_input("Enter Your First Number:")
+Input2 = st.text_input("Enter Your Second Number:")
 
-print(headtext)
-select = input("Enter your Choice:")
-
-if select == "1":
-    while Tasklist = []:
-        print("YOU CAN ADD A NEW TASK TO THE LIST")
-
-        task = input("Add Task:")
-        Tasklist += task
-        print(Tasklist)
-
-elif select == "2":
-    print(Tasklist)
-
-elif select == "2":
-    print("2")
-
-elif select == "2":
-    print("2")
-
-else:
-    print("invalid")
-     
+# Ensure the calculation happens when the button is pressed
+if st.button("Result"):
+    try:
+        # Convert inputs to float for calculation
+        num1 = float(Input1)
+        num2 = float(Input2)
+        
+        # Perform the calculation based on the operation
+        if Expr == "+":
+            result = num1 + num2
+            st.write("Result: You Add:", result)
+        elif Expr == "-":
+            result = num1 - num2
+            st.write("Result: You Subtract:", result)
+        elif Expr == "/":
+            if num2 != 0:
+                result = num1 / num2
+                st.write("Result: You Divide:", result)
+            else:
+                st.write("Error: Division by Zero")
+        elif Expr == "*":
+            result = num1 * num2
+            st.write("Result: You Multiply:", result)
+        else:
+            st.write("Invalid operation. Please enter one of: +, -, *, /")
+    except ValueError:
+        st.write("Invalid input: Please enter numeric values for both numbers.")
